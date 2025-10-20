@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail, Phone, ChevronDown, Menu, X, Code, Briefcase, A
 import { projects, categories } from '../data/projects';
 import ProjectModal from './ProjectModal';
 import type { Project } from '../data/projects';
+import CertificationsModal, { Certification } from './CertificationsModal';
 
 const Portfolio: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -10,6 +11,7 @@ const Portfolio: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showCerts, setShowCerts] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,13 +46,31 @@ const Portfolio: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  const certifications: Certification[] = [
+    {
+      title: 'CCNA: Network Defense',
+      issuer: 'Cisco Networking Academy',
+      year: '2024'
+    },
+    {
+      title: 'CCNA: Enterprise Networking',
+      issuer: 'Cisco Networking Academy',
+      year: '2023'
+    },
+    {
+      title: 'CCNA: Introduction to Networks',
+      issuer: 'Cisco Networking Academy',
+      year: '2023'
+    }
+  ];
+
   return (
     <div className="bg-slate-950 text-white min-h-screen overflow-x-hidden">
       {/* Subtle gradient background */}
       <div 
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.08), transparent 80%)`
+          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.08), transparent 80%)`
         }}
       />
 
@@ -58,12 +78,12 @@ const Portfolio: React.FC = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-slate-950/95 backdrop-blur-lg shadow-lg border-b border-slate-800' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <a href="#home" className="text-xl font-bold tracking-tight text-white hover:text-purple-400 transition-colors duration-300">
+            <a href="#home" className="text-xl font-bold tracking-tight text-white hover:text-blue-400 transition-colors duration-300">
               LMD
             </a>
             
             <div className="hidden md:flex space-x-1">
-              {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
+              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -84,7 +104,7 @@ const Portfolio: React.FC = () => {
 
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 space-y-2 animate-slideDown">
-              {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
+              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -104,7 +124,7 @@ const Portfolio: React.FC = () => {
         
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <div className="mb-8 opacity-0 animate-fadeInUp">
-            <span className="inline-flex items-center gap-2 text-purple-400 text-sm font-medium px-4 py-2 rounded-full bg-purple-950/30 border border-purple-800">
+            <span className="inline-flex items-center gap-2 text-blue-400 text-sm font-medium px-4 py-2 rounded-full bg-blue-950/30 border border-blue-800">
               <Sparkles size={14} />
               Welcome to my portfolio
             </span>
@@ -125,7 +145,7 @@ const Portfolio: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
             <a 
               href="#contact" 
-              className="group inline-flex items-center justify-center px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25"
+              className="group inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
             >
               Get In Touch
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -140,8 +160,8 @@ const Portfolio: React.FC = () => {
 
           <div className="flex justify-center gap-4 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
             {[
-              { icon: Github, href: 'https://github.com' },
-              { icon: Linkedin, href: 'https://linkedin.com' },
+              { icon: Github, href: 'https://github.com/lawrencedural' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/lawrence-mark-dural-7b7187316/' },
               { icon: Mail, href: 'mailto:duralmacky@gmail.com' }
             ].map((social, i) => (
               <a 
@@ -170,27 +190,27 @@ const Portfolio: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">About Me</h2>
-            <div className="w-12 h-1 bg-purple-600 mx-auto rounded-full"></div>
+            <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full"></div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-slate-300 text-base leading-relaxed">
-                I'm an <span className="text-purple-400 font-semibold">Information Technology undergraduate</span> at De La Salle University with a passion for building innovative solutions. My experience spans full-stack web development, enterprise systems, and IoT integration.
+                I'm an <span className="text-blue-400 font-semibold">Information Technology undergraduate</span> at De La Salle University with a passion for building innovative solutions. My experience spans full-stack web development, enterprise systems, and IoT integration.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
-                Currently working at <span className="text-purple-400 font-semibold">Madison 88 Business Solutions Asia</span>, where I develop enterprise-level systems serving 365+ users across the US, Indonesia, and Philippines.
+                Currently working at <span className="text-blue-400 font-semibold">Madison 88 Business Solutions Asia</span>, where I develop enterprise-level systems serving 365+ users across the US, Indonesia, and Philippines.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
-                I led hardware development for <span className="text-purple-400 font-semibold">EduSpace</span>, a capstone project combining ESP32, OpenCV, and Firebase for real-time occupancy detection—demonstrating my ability to seamlessly merge hardware and software.
+                I led hardware development for <span className="text-blue-400 font-semibold">EduSpace</span>, a capstone project combining ESP32, OpenCV, and Firebase for real-time occupancy detection—demonstrating my ability to seamlessly merge hardware and software.
               </p>
             </div>
             
             <div className="space-y-6">
-              <div className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+              <div className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-purple-950/50 rounded-lg">
-                    <Award className="w-6 h-6 text-purple-400" />
+                  <div className="p-3 bg-blue-950/50 rounded-lg">
+                    <Award className="w-6 h-6 text-blue-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-white">Education</h3>
                 </div>
@@ -199,30 +219,68 @@ const Portfolio: React.FC = () => {
                 <p className="text-slate-500 text-sm">2021 - Present</p>
               </div>
               
-              <div className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+              <button onClick={() => setShowCerts(true)} className="w-full text-left group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-purple-950/50 rounded-lg">
-                    <Code className="w-6 h-6 text-purple-400" />
+                  <div className="p-3 bg-blue-950/50 rounded-lg">
+                    <Code className="w-6 h-6 text-blue-400" />
                   </div>
                   <h3 className="text-xl font-semibold text-white">Certifications</h3>
                 </div>
                 <ul className="space-y-2 text-slate-400 text-sm">
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                     CCNA: Network Defense (2024)
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                     CCNA: Enterprise Networking (2023)
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                     CCNA: Introduction to Networks (2023)
                   </li>
                 </ul>
-              </div>
+                <p className="mt-4 text-blue-300 text-sm">Click to view all</p>
+              </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-32 px-6 bg-slate-950 relative">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Experience</h2>
+            <div className="w-12 h-1 bg-blue-600 rounded-full mb-8"></div>
+            <p className="text-slate-400 max-w-xl">A snapshot of roles and responsibilities from recent years.</p>
+          </div>
+          <ol className="relative border-s border-slate-800 md:pl-8">
+            {[{
+              title: 'IT Intern',
+              company: 'Madison 88, Ltd.',
+              year: 'Present'
+            },{
+              title: 'BS Information Technology (Started)',
+              company: 'De La Salle University, Manila',
+              year: '2021'
+            }].map((job, i) => (
+              <li key={i} className="pb-8">
+                <div className="flex items-start gap-4">
+                  <span className="mt-1 w-3 h-3 rounded-full bg-blue-500 border-2 border-slate-950"></span>
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-white font-semibold">{job.title}</h3>
+                      {job.year && (
+                        <span className="text-xs px-2 py-1 rounded-md bg-blue-950/40 text-blue-300 border border-blue-800">{job.year}</span>
+                      )}
+                    </div>
+                    <p className="text-slate-400 text-sm">{job.company}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -231,7 +289,7 @@ const Portfolio: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
-            <div className="w-12 h-1 bg-purple-600 mx-auto rounded-full mb-8"></div>
+            <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full mb-8"></div>
             <p className="text-slate-400 max-w-2xl mx-auto text-base">
               A selection of projects demonstrating my expertise in web development, IoT systems, and enterprise software.
             </p>
@@ -244,7 +302,7 @@ const Portfolio: React.FC = () => {
                 onClick={() => setActiveFilter(category)}
                 className={`px-5 py-2 rounded-lg transition-all duration-300 font-medium text-sm ${
                   activeFilter === category
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25'
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
                     : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
                 }`}
               >
@@ -258,15 +316,15 @@ const Portfolio: React.FC = () => {
               <button
                 key={index}
                 onClick={() => setSelectedProject(project)}
-                className="group relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:shadow-lg hover:shadow-purple-500/10 text-left cursor-pointer"
+                className="group relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/10 text-left cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-purple-950/50 text-purple-300">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-950/50 text-blue-300">
                     {project.year}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-purple-400 transition-colors">
+                <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
                 
@@ -298,12 +356,17 @@ const Portfolio: React.FC = () => {
         />
       )}
 
+      {/* Certifications Modal */}
+      {showCerts && (
+        <CertificationsModal certifications={certifications} onClose={() => setShowCerts(false)} />
+      )}
+
       {/* Skills Section */}
       <section id="skills" className="py-32 px-6 bg-slate-950 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Skills & Expertise</h2>
-            <div className="w-12 h-1 bg-purple-600 mx-auto rounded-full mb-8"></div>
+            <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full mb-8"></div>
             <p className="text-slate-400 max-w-2xl mx-auto text-base">
               Technologies and tools I use to build scalable, efficient solutions.
             </p>
@@ -312,7 +375,7 @@ const Portfolio: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
             {skills.map((skillGroup, idx) => (
               <div key={idx} className="space-y-4">
-                <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">{skillGroup.category}</h3>
+                <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider">{skillGroup.category}</h3>
                 <ul className="space-y-2">
                   {skillGroup.items.map((skill, i) => (
                     <li key={i} className="text-slate-300 text-sm hover:text-white transition-colors">
@@ -332,9 +395,9 @@ const Portfolio: React.FC = () => {
             ].map((stat, i) => (
               <div 
                 key={i}
-                className="group text-center p-8 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+                className="group text-center p-8 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
               >
-                <stat.icon className="w-10 h-10 text-purple-400 mx-auto mb-4" />
+                <stat.icon className="w-10 h-10 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-3xl font-bold text-white mb-2">
                   {stat.number}
                 </h3>
@@ -350,7 +413,7 @@ const Portfolio: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Let's Connect</h2>
-            <div className="w-12 h-1 bg-purple-600 mx-auto rounded-full mb-8"></div>
+            <div className="w-12 h-1 bg-blue-600 mx-auto rounded-full mb-8"></div>
             <p className="text-slate-400 text-base max-w-2xl mx-auto">
               I'm always interested in hearing about new opportunities and projects. Feel free to reach out!
             </p>
@@ -359,18 +422,18 @@ const Portfolio: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <a 
               href="mailto:duralmacky@gmail.com" 
-              className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+              className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
             >
-              <Mail className="w-10 h-10 text-purple-400 mx-auto mb-4" />
+              <Mail className="w-10 h-10 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
               <p className="text-slate-400 text-sm">duralmacky@gmail.com</p>
             </a>
             
             <a 
               href="tel:+639565931004" 
-              className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+              className="group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
             >
-              <Phone className="w-10 h-10 text-purple-400 mx-auto mb-4" />
+              <Phone className="w-10 h-10 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
               <p className="text-slate-400 text-sm">+956 593 1004</p>
             </a>

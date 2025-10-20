@@ -74,17 +74,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
           {/* Project Details */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">Year</h3>
+              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Year</h3>
               <p className="text-slate-300">{project.year}</p>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">Description</h3>
+              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Description</h3>
               <p className="text-slate-300 leading-relaxed">{project.fullDescription}</p>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-3">Technologies Used</h3>
+              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, i) => (
                   <span
@@ -102,7 +102,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300"
               >
                 View Project
                 <ExternalLink size={18} />

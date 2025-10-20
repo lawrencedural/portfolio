@@ -17,7 +17,7 @@ export interface Project {
       fullDescription: 'EduSpace is an intelligent occupancy management system that combines embedded systems and machine learning. Using ESP32-CAM with YOLO v5, the system detects and counts people in real-time. Data is processed and pushed to Firebase, where a web dashboard displays live occupancy status, historical trends, and analytics for facility managers.',
       technologies: ['ESP32', 'Python', 'OpenCV', 'YOLO', 'Firebase'],
       year: '2024-2025',
-      category: 'IoT',
+      category: 'Capstone Project',
       gradient: 'from-blue-500 to-cyan-500',
       images: [
         'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
@@ -97,4 +97,4 @@ export interface Project {
     }
   ];
   
-  export const categories = ['All', 'Web Development', 'IoT', 'Mobile', 'Game Development'];
+  export const categories = ['All', 'Web Development', 'Capstone Project', 'Mobile', 'Game Development'];

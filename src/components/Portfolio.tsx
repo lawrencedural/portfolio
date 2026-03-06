@@ -17,7 +17,7 @@ const Portfolio: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e: { clientX: number; clientY: number }) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('scroll', handleScroll);
@@ -29,11 +29,11 @@ const Portfolio: React.FC = () => {
   }, []);
 
   const skills = [
-    { category: 'Languages', items: ['JavaScript', 'Python', 'Java', 'C/C++', 'Kotlin', 'PHP'] },
-    { category: 'Frontend', items: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3'] },
-    { category: 'Backend', items: ['Node.js', 'Firebase', 'Supabase', 'PostgreSQL'] },
-    { category: 'Hardware & IoT', items: ['Arduino', 'ESP32', 'OpenCV', 'YOLO'] },
-    { category: 'Tools', items: ['Git', 'VS Code', 'Android Studio', 'MongoDB'] }
+    { category: 'Programming Languages', items: ['Java', 'JavaScript', 'Python', 'C/C++', 'Kotlin', 'PHP'] },
+    { category: 'QA & Testing', items: ['Robot Framework', 'Selenium', 'Manual Testing', 'Test Automation', 'Regression Testing'] },
+    { category: 'Web Technologies', items: ['React.js', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap', 'WordPress'] },
+    { category: 'Databases & Cloud', items: ['MySQL', 'MongoDB', 'Firebase'] },
+    { category: 'Hardware & Tools', items: ['ESP32', 'Arduino', 'OpenCV', 'YOLO', 'Git', 'Linux'] }
   ];
 
   const filteredProjects = activeFilter === 'All' 
@@ -135,11 +135,11 @@ const Portfolio: React.FC = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-400 mb-8 opacity-0 animate-fadeInUp font-light" style={{ animationDelay: '0.2s' }}>
-            IT Undergraduate
+            Information Technology Graduate
           </p>
           
           <p className="text-slate-400 max-w-2xl mx-auto mb-12 opacity-0 animate-fadeInUp text-base leading-relaxed" style={{ animationDelay: '0.3s' }}>
-            I build scalable web applications and IoT solutions for enterprise clients. Currently at Madison 88 Business Solutions Asia, working on systems that serve 365+ users across multiple countries.
+            I build scalable web applications, QA automation suites, and IoT solutions for enterprise clients. Currently a QA Automation Engineer Intern at Finstra | Financial Software Solutions & Systems, previously an IT Intern at Madison 88 Business Solutions Asia working on systems that serve 365+ users across multiple countries.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
@@ -196,13 +196,13 @@ const Portfolio: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-slate-300 text-base leading-relaxed">
-                I'm an <span className="text-blue-400 font-semibold">Information Technology undergraduate</span> at De La Salle University with a passion for building innovative solutions. My experience spans full-stack web development, enterprise systems, and IoT integration.
+                I'm an <span className="text-blue-400 font-semibold">Information Technology graduate</span> from De La Salle University with a passion for building innovative solutions. My experience spans full-stack web development, QA automation, enterprise systems, and IoT integration.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
-                Currently working at <span className="text-blue-400 font-semibold">Madison 88 Business Solutions Asia</span>, where I develop enterprise-level systems serving 365+ users across the US, Indonesia, and Philippines.
+                I'm currently a <span className="text-blue-400 font-semibold">QA Automation Engineer Intern at Finstra | Financial Software Solutions & Systems</span>, where I develop and maintain automated test suites using Robot Framework and Selenium to ensure the reliability of financial software products.
               </p>
               <p className="text-slate-300 text-base leading-relaxed">
-                I led hardware development for <span className="text-blue-400 font-semibold">EduSpace</span>, a capstone project combining ESP32, OpenCV, and Firebase for real-time occupancy detection—demonstrating my ability to seamlessly merge hardware and software.
+                Previously, I worked as an <span className="text-blue-400 font-semibold">IT Intern at Madison 88 Business Solutions Asia</span>, building account allocation, purchase order, and supply chain components that support 365+ users across the US, Indonesia, and the Philippines. I also led hardware development for <span className="text-blue-400 font-semibold">EduSpace</span>, a capstone project combining ESP32, OpenCV, and Firebase for real-time occupancy detection.
               </p>
             </div>
             
@@ -216,7 +216,7 @@ const Portfolio: React.FC = () => {
                 </div>
                 <p className="text-white font-medium">De La Salle University</p>
                 <p className="text-slate-400 text-sm">BS Information Technology</p>
-                <p className="text-slate-500 text-sm">2021 - Present</p>
+                <p className="text-slate-500 text-sm">2021 - 2026 • Graduated February 2026</p>
               </div>
               
               <button onClick={() => setShowCerts(true)} className="w-full text-left group bg-slate-900/50 p-8 rounded-xl border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
@@ -257,13 +257,21 @@ const Portfolio: React.FC = () => {
           </div>
           <ol className="relative border-s border-slate-800 md:pl-8">
             {[{
-              title: 'IT Intern',
-              company: 'Madison 88, Ltd.',
-              year: 'Present'
+              title: 'QA Automation Engineer Intern',
+              company: 'Finstra | Financial Software Solutions & Systems',
+              year: 'Dec 2025 - Present'
             },{
-              title: 'BS Information Technology (Started)',
+              title: 'IT Intern',
+              company: 'Madison 88 Business Solutions Asia',
+              year: 'Aug 2025 - Nov 2025'
+            },{
+              title: 'Licensed Financial Advisor',
+              company: 'Sun Life Philippines – Makati Office, Goldenlian Unit',
+              year: 'Apr 2025 - Present'
+            },{
+              title: 'BS Information Technology',
               company: 'De La Salle University, Manila',
-              year: '2021'
+              year: '2021 - 2026'
             }].map((job, i) => (
               <li key={i} className="pb-8">
                 <div className="flex items-start gap-4">
@@ -389,7 +397,7 @@ const Portfolio: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { number: '5+', label: 'Years Experience', icon: Briefcase },
+              { number: '3+', label: 'Years Experience', icon: Briefcase },
               { number: '10+', label: 'Projects Completed', icon: Code },
               { number: '3', label: 'CCNA Certifications', icon: Award }
             ].map((stat, i) => (
@@ -435,14 +443,14 @@ const Portfolio: React.FC = () => {
             >
               <Phone className="w-10 h-10 text-blue-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
-              <p className="text-slate-400 text-sm">+956 593 1004</p>
+              <p className="text-slate-400 text-sm">+63 956 593 1004</p>
             </a>
           </div>
 
           <div className="flex justify-center gap-4">
             {[
-              { icon: Github, href: 'https://github.com' },
-              { icon: Linkedin, href: 'https://linkedin.com' },
+              { icon: Github, href: 'https://github.com/lawrencedural' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/lawrence-mark-dural-7b7187316/' },
               { icon: Mail, href: 'mailto:duralmacky@gmail.com' }
             ].map((social, i) => (
               <a 
@@ -462,7 +470,7 @@ const Portfolio: React.FC = () => {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-slate-800 text-center bg-slate-950">
         <p className="text-slate-500 text-sm">
-          © 2025 Lawrence Mark Dural. Built with React and Tailwind CSS.
+          © 2026 Lawrence Mark Dural. Built with React and Tailwind CSS.
         </p>
       </footer>
 

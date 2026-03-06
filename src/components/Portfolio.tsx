@@ -139,8 +139,7 @@ const Portfolio: React.FC = () => {
           </p>
           
           <p className="text-slate-400 max-w-2xl mx-auto mb-12 opacity-0 animate-fadeInUp text-base leading-relaxed" style={{ animationDelay: '0.3s' }}>
-            I build scalable web applications, QA automation suites, and IoT solutions for enterprise clients. Currently a QA Automation Engineer Intern at Finstra | Financial Software Solutions & Systems, previously an IT Intern at Madison 88 Business Solutions Asia working on systems that serve 365+ users across multiple countries.
-          </p>
+          Information Technology graduate with experience in software development, quality assurance automation, and system integration within enterprise and academic projects. Skilled in test automation using Robot Framework and Selenium for banking applications, along with web development and database-driven systems. Experienced in developing IoT-based solutions using ESP32, OpenCV, and Firebase for real-time monitoring applications. Seeking an entry-level role in Software Development, QA Automation, or IT Systems where technical and analytical skills can contribute to reliable and high-quality software solutions.          </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
             <a 

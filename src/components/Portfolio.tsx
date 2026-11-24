@@ -113,8 +113,12 @@ const Portfolio: React.FC = () => {
           <p className="mb-5 text-sm text-zinc-600 dark:text-zinc-400">Laguna, Philippines</p>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">Lawrence Mark Dural</h1>
           <p className="mt-4 text-lg text-zinc-700 dark:text-zinc-300">Junior Web Developer · BS Information Technology</p>
-          <p className="mt-6 max-w-2xl leading-relaxed text-zinc-600 dark:text-zinc-400">I develop and maintain business applications, work with databases, and automate internal processes. I'm currently learning more about cloud infrastructure and platform engineering.</p>
-          <div className="mt-8 flex flex-wrap items-center gap-5 text-sm">
+          <p className="mt-6 max-w-2xl leading-relaxed text-zinc-600 dark:text-zinc-400">
+            I develop and maintain business applications, work with databases,
+            and automate internal processes. I'm currently expanding my
+            knowledge of cloud computing, infrastructure, and automation,
+            with the goal of pursuing a career in cloud engineering.
+          </p>          <div className="mt-8 flex flex-wrap items-center gap-5 text-sm">
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-md bg-zinc-900 dark:bg-zinc-100 px-4 py-2.5 font-medium text-white dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-300">View resume <ArrowUpRight className="inline" size={15}/></a>
             <a href="https://github.com/lawrencedural" className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             <a href="https://www.linkedin.com/in/lawrence-mark-dural-7b7187316/" className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>

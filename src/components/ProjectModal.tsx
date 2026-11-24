@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import { Project } from '../data/projects';
+import type { Project } from '../data/projects';
 
 interface ProjectModalProps {
   project: Project;
@@ -20,13 +20,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-slate-900 rounded-2xl border border-slate-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 flex justify-between items-center p-6 border-b border-slate-800 bg-slate-900">
-          <h2 className="text-2xl font-bold text-white">{project.title}</h2>
+        <div className="sticky top-0 flex justify-between items-center p-6 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">{project.title}</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+            aria-label="Close project" className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
           >
             <X size={24} />
           </button>
@@ -34,8 +34,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
         {/* Content */}
         <div className="p-6 space-y-6">
-          {/* Image Carousel */}
-          <div className="relative bg-slate-950 rounded-xl overflow-hidden">
+          {/* Only show images when actual project screenshots are available. */}
+          {project.images.length > 0 && (
+          <div className="relative bg-zinc-50 dark:bg-zinc-950 rounded-xl overflow-hidden">
             <img
               src={project.images[currentImageIndex]}
               alt={`${project.title} - ${currentImageIndex + 1}`}
@@ -71,25 +72,26 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
             )}
           </div>
 
+          )}
           {/* Project Details */}
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Year</h3>
-              <p className="text-slate-300">{project.year}</p>
+              <h3 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-2">Year</h3>
+              <p className="text-zinc-700 dark:text-zinc-300">{project.year}</p>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">Description</h3>
-              <p className="text-slate-300 leading-relaxed">{project.fullDescription}</p>
+              <h3 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-2">Description</h3>
+              <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">{project.fullDescription}</p>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">Technologies Used</h3>
+              <h3 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider mb-3">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, i) => (
                   <span
                     key={i}
-                    className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg border border-slate-700 text-sm"
+                    className="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg border border-zinc-200 dark:border-zinc-700 text-sm"
                   >
                     {tech}
                   </span>
@@ -102,7 +104,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300 rounded-lg font-semibold transition-all duration-300"
               >
                 View Project
                 <ExternalLink size={18} />

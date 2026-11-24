@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Shared section design: neutral surfaces, restrained contrast and clear hierarchy. */
+.portfolio-shell {
+  --panel: #fff;
+  --tint: #f5f6f5;
+  --line: #e1e4e1;
+  --muted: #646b67;
+  --accent: #587466;
+  --hover: #a1b1a8;
+}
+.portfolio-shell[data-theme="dark"] {
+  --panel: #1a1d1c;
+  --tint: #191c1b;
+  --line: #343936;
+  --muted: #a3aaa5;
+  --accent: #a1b8a8;
+  --hover: #778d80;
+}
+.portfolio-inner { max-width: 64rem; margin-inline: auto; padding-inline: 1.5rem; }
+.portfolio-section { padding-block: 4.5rem; border-top: 1px solid var(--line); }
+.portfolio-tinted { background-color: var(--tint); }
+.portfolio-section h2::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); margin-bottom: 14px; }
+.portfolio-card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.portfolio-project { transition: border-color 160ms ease, box-shadow 160ms ease; }
+.portfolio-project:hover { border-color: var(--hover); box-shadow: 0 3px 12px #00000008; }
+.portfolio-filter { padding: 6px 12px; border: 1px solid transparent; border-radius: 5px; color: var(--muted); }
+.portfolio-filter:hover, .portfolio-filter.is-active { background: var(--panel); border-color: var(--line); color: inherit; }
+.portfolio-timeline { margin-left: 5px; padding-left: 24px; border-left: 1px solid var(--line); }
+.portfolio-job { position: relative; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.portfolio-job:first-child { padding-top: 4px; }
+.portfolio-job:last-child { border-bottom: 0; padding-bottom: 4px; }
+.portfolio-job::before { content: ''; position: absolute; top: 29px; left: -29px; width: 9px; height: 9px; background: var(--accent); border: 2px solid var(--tint); border-radius: 50%; }
+.portfolio-job:first-child::before { top: 11px; }
+.portfolio-skill { display: flex; align-items: baseline; gap: 9px; }
+.portfolio-skill::before { content: ''; display: inline-block; width: 4px; height: 4px; flex: 0 0 4px; border-radius: 50%; background: var(--accent); transform: translateY(-2px); }
+.portfolio-contact { border: 1px solid var(--line); border-radius: 8px; padding: clamp(24px, 5vw, 48px); background: var(--tint); }
+.portfolio-contact a:hover { color: var(--accent); }
+.portfolio-shell :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 640px) { .portfolio-section { padding-block: 3rem; } .portfolio-timeline { padding-left: 18px; } .portfolio-job::before { left: -23px; } }
+@media (prefers-reduced-motion: reduce) { .portfolio-project { transition: none; } }
